@@ -42,8 +42,6 @@ export const Hero = () => {
               </div>
               <p className="hero-trust-text">
                 <strong>Trusted by B2B founders</strong>
-                <br />
-                consistently closing £2K+ service contracts
               </p>
             </div>
           </div>
