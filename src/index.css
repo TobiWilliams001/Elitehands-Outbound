@@ -730,10 +730,10 @@ section { padding: 7rem 2.5rem; position: relative; z-index: 1; }
 
 .offer-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
   margin-top: 4rem;
-  max-width: 920px;
+  max-width: 1180px;
 }
 
 .offer-card {
@@ -1131,6 +1131,7 @@ footer {
 @media (max-width: 1024px) {
   .hero-grid { gap: 3rem; }
   .how-grid  { gap: 3rem; }
+  .offer-grid { grid-template-columns: repeat(2, 1fr); max-width: 700px; }
 }
 
 @media (max-width: 900px) {

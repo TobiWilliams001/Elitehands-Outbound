@@ -2,27 +2,42 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const tiers = [
   {
-    tier: 'Tier 1',
+    tier: 'Custom',
+    name: 'Custom',
+    featured: false,
+    desc: "Every business is different. We scope a plan around what you actually need, whether that's more content, more outreach, or a different mix altogether.",
+    price: 'Custom',
+    priceNote: 'Scoped to your goals',
+    features: [
+      'Starts with a short call about your goals',
+      'Mix and match content, outreach, and booking',
+      'Scales up or down as your needs change',
+    ],
+    btnLabel: 'Talk to us',
+    btnClass: 'offer-btn outline',
+  },
+  {
+    tier: 'The System',
     name: 'The System',
     featured: false,
-    desc: "We build and set up everything that turns warm interest into booked calls, then hand it over to you to run. You keep control. You handle the posting and conversations. The engine is yours.",
-    price: '£2,500',
-    priceNote: 'One-time build',
+    desc: "We build and run the outreach and qualification engine. You keep creating and posting your own content. Warm interest gets qualified and booked straight into your calendar.",
+    price: '£950',
+    priceNote: 'Includes full setup',
+    priceSuffix: '/mo',
     features: [
       'LinkedIn profile written and optimised for your ICP',
-      'First 4 weeks of content written in your voice',
-      'Full outreach and qualification system set up',
+      'Outreach and qualification system built and run for you',
       'Booking flow configured to your calendar',
-      'Full handover session, you run it from here',
+      'You keep creating and posting your own content',
     ],
     btnLabel: 'Start with the system',
     btnClass: 'offer-btn outline',
   },
   {
-    tier: 'Tier 2',
+    tier: 'Fully Managed',
     name: 'Fully Managed',
     featured: true,
-    desc: "We build it and we run it. Content posted every week in your voice. Outreach and conversations handled. Calls confirmed and landed in your calendar. You show up. Everything else is ours.",
+    desc: "Hands-off, from setup to booked calls. We build it, we write and post the content, we run the outreach. You just show up to calls already on your calendar.",
     price: '£1,400',
     priceNote: 'Includes full setup',
     priceSuffix: '/mo',
@@ -48,7 +63,7 @@ export const Offer = () => {
         <div className="reveal">
           <div className="section-label">What we offer</div>
           <h2 className="section-title" style={{ color: 'var(--navy)' }}>
-            Two ways to work with us.
+            Three ways to work with us.
           </h2>
           <p className="section-sub" style={{ color: 'var(--slate)' }}>
             You choose how involved you want to be. We handle the rest.
