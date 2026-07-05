@@ -1,3 +1,5 @@
+import { IconLock } from './icons';
+
 export const Cta = () => {
   return (
     <section className="cta-section" id="cta">
@@ -15,7 +17,7 @@ export const Cta = () => {
         <div className="cta-actions">
           <a href="#" className="btn-cta-primary">Book a discovery call →</a>
         </div>
-        <p className="cta-note">No pitch. No pressure. If it's not the right fit, we'll tell you.</p>
+        <p className="cta-note"><IconLock /> No pitch. No pressure. If it's not the right fit, we'll tell you.</p>
       </div>
     </section>
   );

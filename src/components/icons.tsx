@@ -7,6 +7,7 @@ const base = {
   strokeWidth: 2,
   strokeLinecap: 'round' as const,
   strokeLinejoin: 'round' as const,
+  'aria-hidden': true as const,
 };
 
 export const IconLike = () => (
@@ -53,5 +54,12 @@ export const IconSearch = () => (
   <svg {...base}>
     <circle cx="11" cy="11" r="7" />
     <path d="M21 21l-4.3-4.3" />
+  </svg>
+);
+
+export const IconLock = () => (
+  <svg {...base}>
+    <rect x="4" y="11" width="16" height="10" rx="2" />
+    <path d="M8 11V7a4 4 0 0 1 8 0v4" />
   </svg>
 );
