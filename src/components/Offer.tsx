@@ -2,11 +2,12 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const tiers = [
   {
-    tier: 'Custom',
+    tier: 'Tailored plan',
     name: 'Custom',
     featured: false,
     desc: "Every business is different. We scope a plan around what you actually need, whether that's more content, more outreach, or a different mix altogether.",
-    price: 'Custom',
+    price: "Let's talk",
+    priceSmall: true,
     priceNote: 'Scoped to your goals',
     features: [
       'Starts with a short call about your goals',
@@ -17,7 +18,7 @@ const tiers = [
     btnClass: 'offer-btn outline',
   },
   {
-    tier: 'The System',
+    tier: 'You handle content',
     name: 'The System',
     featured: false,
     desc: "We build and run the outreach and qualification engine. You keep creating and posting your own content. Warm interest gets qualified and booked straight into your calendar.",
@@ -34,7 +35,7 @@ const tiers = [
     btnClass: 'offer-btn outline',
   },
   {
-    tier: 'Fully Managed',
+    tier: 'Fully hands-off',
     name: 'Fully Managed',
     featured: true,
     desc: "Hands-off, from setup to booked calls. We build it, we write and post the content, we run the outreach. You just show up to calls already on your calendar.",
@@ -72,13 +73,13 @@ export const Offer = () => {
 
         <div className="offer-grid">
           {tiers.map((t, i) => (
-            <div key={t.tier} className={`offer-card reveal reveal-delay-${i + 1}${t.featured ? ' featured' : ''}`}>
+            <div key={t.name} className={`offer-card reveal reveal-delay-${i + 1}${t.featured ? ' featured' : ''}`}>
               {t.featured && <div className="offer-featured-tag">Most popular</div>}
               <div className="offer-tier">{t.tier}</div>
               <div className="offer-name">{t.name}</div>
               <p className="offer-desc">{t.desc}</p>
 
-              <div className="offer-price">
+              <div className={`offer-price${t.priceSmall ? ' small' : ''}`}>
                 {t.price}
                 {t.priceSuffix && (
                   <span style={{ fontSize: '1rem', fontWeight: 400, color: 'var(--slate)' }}>
