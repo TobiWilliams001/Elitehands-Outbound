@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-// Animated counter that counts up when triggered
 const AnimatedStat = ({ label, value }: { label: string; value: string }) => {
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -25,18 +24,14 @@ const AnimatedStat = ({ label, value }: { label: string; value: string }) => {
   );
 };
 
-const testimonials = [
+const whatWorks = [
   {
-    initials: 'M',
-    quote: '"We looked at my last two months of LinkedIn activity. There were people who engaged and went cold, people who matched exactly who I work with. This system would have caught all of them."',
-    name: 'Matthew Otor',
-    role: 'B2B Video Marketing Consultant, London',
+    title: 'Content that reaches the right people',
+    desc: 'Posts written around your expertise and positioned to reach your ideal client, not a general audience. Engagement is a signal, not a vanity metric.',
   },
   {
-    initials: 'J',
-    quote: '"I came in with zero LinkedIn presence and a very specific type of client I needed to reach. Within weeks there was a profile, consistent content, and conversations starting with the right people."',
-    name: 'Joys Alabi',
-    role: 'Fintech Commercial Strategy Consultant',
+    title: 'Conversations that qualify themselves',
+    desc: 'Warm engagement becomes a natural conversation. Only the people who match who you actually work with ever reach your calendar.',
   },
 ];
 
@@ -62,16 +57,10 @@ export const Results = () => {
         </div>
 
         <div className="results-grid">
-          {testimonials.map((t, i) => (
-            <div key={t.name} className={`result-card reveal reveal-delay-${i + 1}`}>
-              <p className="result-quote">{t.quote}</p>
-              <div className="result-meta">
-                <div className="result-avatar">{t.initials}</div>
-                <div>
-                  <div className="result-name">{t.name}</div>
-                  <div className="result-role">{t.role}</div>
-                </div>
-              </div>
+          {whatWorks.map((w, i) => (
+            <div key={w.title} className={`result-card reveal reveal-delay-${i + 1}`}>
+              <div className="result-title">{w.title}</div>
+              <p className="result-desc">{w.desc}</p>
             </div>
           ))}
         </div>
