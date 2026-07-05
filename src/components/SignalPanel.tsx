@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import { IconLike, IconComment, IconConnect, IconCalendar } from './icons';
 
 interface Signal {
   id: string;
-  icon: string;
   type: 'like' | 'comment' | 'connect' | 'book';
   name: string;
   desc: string;
@@ -12,18 +12,18 @@ interface Signal {
 }
 
 const TEMPLATES = [
-  { icon: '👍', type: 'like'    as const, name: 'Sarah Chen',     desc: 'Engaged with your post on B2B content strategy',   badge: 'Right fit',  cls: 'icp',    time: 'Just now'    },
-  { icon: '💬', type: 'comment' as const, name: 'Anas Hidaoui',   desc: '"This is exactly what we\'ve been dealing with"',  badge: 'Right fit',  cls: 'icp',    time: '2 min ago'   },
-  { icon: '🔗', type: 'connect' as const, name: 'Victoria Ilori', desc: 'Accepted your connection request',                  badge: 'In progress', cls: 'review', time: '5 min ago'   },
-  { icon: '💬', type: 'comment' as const, name: 'Joffrey Berti',  desc: "Replied and confirmed they're preparing to raise", badge: 'Qualifying', cls: 'qual',   time: '8 min ago'   },
-  { icon: '📅', type: 'book'    as const, name: 'Sintu Singh',    desc: 'Call confirmed, Thursday 2pm',                    badge: 'Booked ✓',   cls: 'booked', time: '12 min ago'  },
+  { type: 'like'    as const, name: 'James Carter',   desc: 'Engaged with your post on B2B content strategy',   badge: 'Right fit',   cls: 'icp',    time: 'Just now'    },
+  { type: 'comment' as const, name: 'Priya Anand',     desc: '"This is exactly what we\'ve been dealing with"',  badge: 'Right fit',   cls: 'icp',    time: '2 min ago'   },
+  { type: 'connect' as const, name: 'Daniel Osei',     desc: 'Accepted your connection request',                  badge: 'In progress', cls: 'review', time: '5 min ago'   },
+  { type: 'comment' as const, name: 'Laura Bennett',   desc: "Replied and confirmed they're preparing to raise", badge: 'Qualifying',  cls: 'qual',   time: '8 min ago'   },
+  { type: 'book'    as const, name: 'Michael Thorne',  desc: 'Call confirmed, Thursday 2pm',                     badge: 'Booked',      cls: 'booked', time: '12 min ago'  },
 ];
 
-const ICON_STYLES: Record<string, { bg: string; color: string }> = {
-  like:    { bg: 'rgba(13,148,136,0.18)',  color: '#14B8A8' },
-  comment: { bg: 'rgba(99,102,241,0.18)',  color: '#818CF8' },
-  connect: { bg: 'rgba(168,85,247,0.18)',  color: '#C084FC' },
-  book:    { bg: 'rgba(22,163,74,0.18)',   color: '#4ADE80' },
+const ICON_STYLES: Record<string, { bg: string; color: string; Icon: typeof IconLike }> = {
+  like:    { bg: 'rgba(13,148,136,0.18)',  color: '#14B8A8', Icon: IconLike },
+  comment: { bg: 'rgba(99,102,241,0.18)',  color: '#818CF8', Icon: IconComment },
+  connect: { bg: 'rgba(168,85,247,0.18)',  color: '#C084FC', Icon: IconConnect },
+  book:    { bg: 'rgba(22,163,74,0.18)',   color: '#4ADE80', Icon: IconCalendar },
 };
 
 let uid = 0;
@@ -65,6 +65,7 @@ export const SignalPanel = () => {
       <div className="signal-feed">
         {items.map((item, i) => {
           const style = ICON_STYLES[item.type];
+          const Icon = style.Icon;
           return (
             <div
               key={item.id}
@@ -75,7 +76,7 @@ export const SignalPanel = () => {
                 className="signal-icon"
                 style={{ background: style.bg, color: style.color }}
               >
-                {item.icon}
+                <Icon />
               </div>
               <div className="signal-body">
                 <div className="signal-name">{item.name}</div>

@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { IconPen, IconZap, IconSearch, IconComment, IconCalendar } from './icons';
 
 const steps = [
   {
@@ -24,11 +25,11 @@ const steps = [
 ];
 
 const pipeline = [
-  { icon: '✍', label: 'Content published',    desc: 'Reaches your ideal client on LinkedIn'                        },
-  { icon: '⚡', label: 'Interest detected',    desc: 'Someone engages: like, comment, connection'                   },
-  { icon: '🔍', label: 'Right fit confirmed',  desc: 'We check they match who you actually work with'               },
-  { icon: '💬', label: 'Conversation started', desc: 'Personalised message, natural back-and-forth, qualified'      },
-  { icon: '📅', label: 'Call confirmed',       desc: 'Booking link sent. Calendar updated. You\'re notified.'       },
+  { Icon: IconPen,     label: 'Content published',    desc: 'Reaches your ideal client on LinkedIn'                   },
+  { Icon: IconZap,     label: 'Interest detected',    desc: 'Someone engages: like, comment, connection'              },
+  { Icon: IconSearch,  label: 'Right fit confirmed',  desc: 'We check they match who you actually work with'          },
+  { Icon: IconComment, label: 'Conversation started', desc: 'Personalised message, natural back-and-forth, qualified' },
+  { Icon: IconCalendar, label: 'Call confirmed',      desc: 'Booking link sent. Calendar updated. You\'re notified.'  },
 ];
 
 export const HowItWorks = () => {
@@ -64,7 +65,7 @@ export const HowItWorks = () => {
           <div className="how-visual reveal reveal-delay-2">
             {pipeline.map((node, i) => (
               <div className="pipe-node" key={i}>
-                <div className="pipe-icon">{node.icon}</div>
+                <div className="pipe-icon"><node.Icon /></div>
                 <div>
                   <div className="pipe-label">{node.label}</div>
                   <p className="pipe-desc">{node.desc}</p>
