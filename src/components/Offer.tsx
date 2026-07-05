@@ -24,7 +24,7 @@ const tiers = [
     featured: true,
     desc: "We build it and we run it. Content posted every week in your voice. Outreach and conversations handled. Calls confirmed and landed in your calendar. You show up. Everything else is ours.",
     price: '£1,400',
-    priceNote: '3-month minimum · includes full setup',
+    priceNote: 'Includes full setup',
     priceSuffix: '/mo',
     features: [
       'LinkedIn profile built and optimised',

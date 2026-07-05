@@ -42,7 +42,6 @@ const testimonials = [
 
 const stats = [
   { value: '48h',  label: 'From warm signal to conversation started' },
-  { value: '£2K+', label: 'Minimum offer we work with' },
   { value: '3 mo', label: 'Typical time to a consistent call flow' },
   { value: '0',    label: 'Cold outreach required from you' },
 ];
