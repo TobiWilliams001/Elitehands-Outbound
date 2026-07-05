@@ -63,10 +63,10 @@ export const Offer = () => {
       <div className="container">
         <div className="reveal">
           <div className="section-label">What we offer</div>
-          <h2 className="section-title" style={{ color: 'var(--navy)' }}>
+          <h2 className="section-title">
             Three ways to work with us.
           </h2>
-          <p className="section-sub" style={{ color: 'var(--slate)' }}>
+          <p className="section-sub">
             You choose how involved you want to be. We handle the rest.
           </p>
         </div>
@@ -82,7 +82,7 @@ export const Offer = () => {
               <div className={`offer-price${t.priceSmall ? ' small' : ''}`}>
                 {t.price}
                 {t.priceSuffix && (
-                  <span style={{ fontSize: '1rem', fontWeight: 400, color: 'var(--slate)' }}>
+                  <span style={{ fontSize: '1rem', fontWeight: 400, color: 'var(--slate-xl)' }}>
                     {t.priceSuffix}
                   </span>
                 )}
