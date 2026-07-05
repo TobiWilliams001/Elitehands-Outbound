@@ -159,6 +159,8 @@ nav.scrolled {
 }
 .nav-links a:hover { color: var(--white); }
 .nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--white); }
+.nav-links a.active::after { transform: scaleX(1); background: var(--teal-glow); }
 
 .nav-cta {
   background: var(--teal);
@@ -395,9 +397,11 @@ nav.scrolled {
   font-family: var(--serif);
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--teal);
-  background: var(--navy-lt);
+  color: var(--teal-lt);
+  background: linear-gradient(150deg, rgba(13,148,136,0.35), var(--navy-lt) 70%);
+  transition: transform 0.2s var(--ease-out);
 }
+.hero-avatars:hover .hero-avatar { transform: translateY(-2px); }
 .hero-avatar:first-child { margin-left: 0; }
 .hero-trust-text { font-size: 0.78rem; color: var(--slate-xl); line-height: 1.5; }
 .hero-trust-text strong { color: var(--white); }
