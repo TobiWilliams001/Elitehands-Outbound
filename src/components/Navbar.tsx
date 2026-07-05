@@ -9,11 +9,31 @@ const links = [
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = links
+      .map((l) => document.querySelector(l.href))
+      .filter((el): el is Element => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) {
+          setActive(`#${visible[0].target.id}`);
+        }
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -33,7 +53,9 @@ export const Navbar = () => {
       <a href="#" className="nav-logo">Elite<span>hands</span></a>
       <ul className="nav-links">
         {links.map((l) => (
-          <li key={l.href}><a href={l.href}>{l.label}</a></li>
+          <li key={l.href}>
+            <a href={l.href} className={active === l.href ? 'active' : ''}>{l.label}</a>
+          </li>
         ))}
       </ul>
       <a href="#cta" className="nav-cta">Book a call</a>
