@@ -5,7 +5,7 @@ const tiers = [
     tier: 'Tier 1',
     name: 'The System',
     featured: false,
-    desc: "We build and set up everything that turns warm interest into booked calls — then hand it over to you to run. You keep control. You handle the posting and conversations. The engine is yours.",
+    desc: "We build and set up everything that turns warm interest into booked calls, then hand it over to you to run. You keep control. You handle the posting and conversations. The engine is yours.",
     price: '£2,500',
     priceNote: 'One-time build',
     features: [
@@ -13,7 +13,7 @@ const tiers = [
       'First 4 weeks of content written in your voice',
       'Full outreach and qualification system set up',
       'Booking flow configured to your calendar',
-      'Full handover session — you run it from here',
+      'Full handover session, you run it from here',
     ],
     btnLabel: 'Start with the system',
     btnClass: 'offer-btn outline',
@@ -28,7 +28,7 @@ const tiers = [
     priceSuffix: '/mo',
     features: [
       'LinkedIn profile built and optimised',
-      '3–4 posts per week, every week — written and posted for you',
+      '3-4 posts per week, every week, written and posted for you',
       'Outreach and qualification handled end to end',
       'Calls confirmed directly into your calendar',
       'Call prep briefing before every meeting',

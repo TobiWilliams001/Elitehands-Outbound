@@ -26,7 +26,7 @@ export const Hero = () => {
             </h1>
 
             <p className="hero-sub">
-              Qualified clients — people who already know what you do and are ready to talk — booked directly into your calendar. You show up. We handle everything that gets them there.
+              Qualified clients, people who already know what you do and are ready to talk, booked directly into your calendar. You show up. We handle everything that gets them there.
             </p>
 
             <div className="hero-actions">

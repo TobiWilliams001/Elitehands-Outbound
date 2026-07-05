@@ -16,7 +16,7 @@ const TEMPLATES = [
   { icon: '💬', type: 'comment' as const, name: 'Anas Hidaoui',   desc: '"This is exactly what we\'ve been dealing with"',  badge: 'Right fit',  cls: 'icp',    time: '2 min ago'   },
   { icon: '🔗', type: 'connect' as const, name: 'Victoria Ilori', desc: 'Accepted your connection request',                  badge: 'In progress', cls: 'review', time: '5 min ago'   },
   { icon: '💬', type: 'comment' as const, name: 'Joffrey Berti',  desc: "Replied and confirmed they're preparing to raise", badge: 'Qualifying', cls: 'qual',   time: '8 min ago'   },
-  { icon: '📅', type: 'book'    as const, name: 'Sintu Singh',    desc: 'Call confirmed — Thursday 2pm',                    badge: 'Booked ✓',   cls: 'booked', time: '12 min ago'  },
+  { icon: '📅', type: 'book'    as const, name: 'Sintu Singh',    desc: 'Call confirmed, Thursday 2pm',                    badge: 'Booked ✓',   cls: 'booked', time: '12 min ago'  },
 ];
 
 const ICON_STYLES: Record<string, { bg: string; color: string }> = {

@@ -28,7 +28,7 @@ const AnimatedStat = ({ label, value }: { label: string; value: string }) => {
 const testimonials = [
   {
     initials: 'M',
-    quote: '"We looked at my last two months of LinkedIn activity. There were people who engaged and went cold — people who matched exactly who I work with. This system would have caught all of them."',
+    quote: '"We looked at my last two months of LinkedIn activity. There were people who engaged and went cold, people who matched exactly who I work with. This system would have caught all of them."',
     name: 'Matthew Otor',
     role: 'B2B Video Marketing Consultant, London',
   },

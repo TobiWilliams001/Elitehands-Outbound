@@ -9,7 +9,7 @@ const steps = [
   {
     num: '02',
     title: 'We create the content',
-    body: '3–4 posts per week in your voice — your expertise, your perspective, your stories. Content designed to reach your ideal client and build trust before any conversation starts.',
+    body: '3-4 posts per week in your voice, your expertise, your perspective, your stories. Content designed to reach your ideal client and build trust before any conversation starts.',
   },
   {
     num: '03',
@@ -25,7 +25,7 @@ const steps = [
 
 const pipeline = [
   { icon: '✍', label: 'Content published',    desc: 'Reaches your ideal client on LinkedIn'                        },
-  { icon: '⚡', label: 'Interest detected',    desc: 'Someone engages — like, comment, connection'                  },
+  { icon: '⚡', label: 'Interest detected',    desc: 'Someone engages: like, comment, connection'                   },
   { icon: '🔍', label: 'Right fit confirmed',  desc: 'We check they match who you actually work with'               },
   { icon: '💬', label: 'Conversation started', desc: 'Personalised message, natural back-and-forth, qualified'      },
   { icon: '📅', label: 'Call confirmed',       desc: 'Booking link sent. Calendar updated. You\'re notified.'       },

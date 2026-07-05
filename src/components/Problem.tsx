@@ -33,7 +33,7 @@ export const Problem = () => {
           </h2>
           <p className="section-sub" style={{ color: 'var(--slate)' }}>
             You're good at what you do. The people who've worked with you know it. The problem is
-            getting enough of the right people to find out about you — consistently, without
+            getting enough of the right people to find out about you, consistently, without
             depending on referrals or cold outreach that goes nowhere.
           </p>
         </div>

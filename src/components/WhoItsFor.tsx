@@ -4,7 +4,7 @@ const yesItems = [
   'You sell a B2B service or expertise above £2,000',
   'Your pipeline is inconsistent or referral-dependent',
   'You have real expertise and real results but no content system',
-  "You close well when you're in the right conversation — you just need more of them",
+  "You close well when you're in the right conversation, you just need more of them",
   "You're willing to spend 15–20 minutes a week reviewing content before it goes live",
 ];
 
