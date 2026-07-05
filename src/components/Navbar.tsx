@@ -21,6 +21,13 @@ export const Navbar = () => {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
   return (
     <nav className={scrolled ? 'scrolled' : ''}>
       <a href="#" className="nav-logo">Elite<span>hands</span></a>
@@ -40,6 +47,8 @@ export const Navbar = () => {
         <span />
         <span />
       </button>
+
+      <div className={`nav-scrim${open ? ' open' : ''}`} onClick={() => setOpen(false)} />
 
       <div className={`nav-mobile${open ? ' open' : ''}`}>
         <ul>

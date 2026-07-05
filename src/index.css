@@ -29,6 +29,12 @@
 
 html { scroll-behavior: smooth; }
 
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--teal-glow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 body {
   font-family: var(--sans);
   background: var(--navy);
@@ -207,6 +213,9 @@ nav.scrolled {
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .nav-mobile {
+  display: none;
+}
+.nav-scrim {
   display: none;
 }
 
@@ -823,6 +832,7 @@ section { padding: 7rem 2.5rem; position: relative; z-index: 1; }
   line-height: 1;
   letter-spacing: -0.02em;
 }
+.offer-price.small { font-size: 1.6rem; }
 .offer-price-note { font-size: 0.78rem; color: var(--slate-xl); margin-bottom: 1.75rem; }
 
 .offer-divider {
@@ -1107,7 +1117,7 @@ section { padding: 7rem 2.5rem; position: relative; z-index: 1; }
   justify-content: center;
   gap: 0.5rem;
 }
-.cta-note::before { content: '🔒'; font-size: 0.75rem; }
+.cta-note svg { width: 13px; height: 13px; flex-shrink: 0; }
 
 /* ─── FOOTER ────────────────────────────────────────────── */
 footer {
@@ -1146,6 +1156,17 @@ footer {
   .nav-links  { display: none; }
   nav > .nav-cta { display: none; }
   .nav-toggle { display: flex; }
+  .nav-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease-out);
+    z-index: 204;
+  }
+  .nav-scrim.open { opacity: 1; pointer-events: auto; }
   .nav-mobile {
     position: fixed;
     top: 0; right: 0;
