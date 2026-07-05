@@ -3,7 +3,6 @@ import { SignalPanel } from './SignalPanel';
 export const Hero = () => {
   return (
     <>
-      {/* Floating background orbs */}
       <div className="bg-orbs" aria-hidden="true">
         <div className="bg-orb bg-orb-1" />
         <div className="bg-orb bg-orb-2" />
@@ -12,7 +11,6 @@ export const Hero = () => {
 
       <div className="hero-wrapper">
         <div className="hero-grid">
-          {/* Left: Copy */}
           <div>
             <div className="hero-eyebrow">
               <span className="hero-eyebrow-dot" />
@@ -46,9 +44,12 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Signal Panel */}
           <SignalPanel />
         </div>
+
+        <a href="#how" className="scroll-cue" aria-label="Scroll to next section">
+          <span />
+        </a>
       </div>
     </>
   );
