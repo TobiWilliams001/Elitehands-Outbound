@@ -2,22 +2,6 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const tiers = [
   {
-    tier: 'Tailored plan',
-    name: 'Custom',
-    featured: false,
-    desc: "Every business is different. We scope a plan around what you actually need, whether that's more content, more outreach, or a different mix altogether.",
-    price: "Let's talk",
-    priceSmall: true,
-    priceNote: 'Scoped to your goals',
-    features: [
-      'Starts with a short call about your goals',
-      'Mix and match content, outreach, and booking',
-      'Scales up or down as your needs change',
-    ],
-    btnLabel: 'Talk to us',
-    btnClass: 'offer-btn outline',
-  },
-  {
     tier: 'You handle content',
     name: 'The System',
     featured: false,
@@ -52,6 +36,22 @@ const tiers = [
     ],
     btnLabel: 'Get fully managed',
     btnClass: 'offer-btn',
+  },
+  {
+    tier: 'Tailored plan',
+    name: 'Custom',
+    featured: false,
+    desc: "Every business is different. We scope a plan around what you actually need, whether that's more content, more outreach, or a different mix altogether.",
+    price: "Let's talk",
+    priceSmall: true,
+    priceNote: 'Scoped to your goals',
+    features: [
+      'Starts with a short call about your goals',
+      'Mix and match content, outreach, and booking',
+      'Scales up or down as your needs change',
+    ],
+    btnLabel: 'Talk to us',
+    btnClass: 'offer-btn outline',
   },
 ];
 
