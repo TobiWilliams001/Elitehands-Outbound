@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Signal {
   id: string;
   icon: string;
-  type: string;
+  type: 'like' | 'comment' | 'connect' | 'book';
   name: string;
   desc: string;
   badge: string;
@@ -11,52 +11,43 @@ interface Signal {
   time: string;
 }
 
-const signalsTemplate = [
-  { icon: '👍', type: 'like', name: 'Sarah Chen', desc: 'Engaged with your post on B2B content strategy', badge: 'Right fit', cls: 'icp', time: 'Just now' },
-  { icon: '💬', type: 'comment', name: 'Anas Hidaoui', desc: '"This is exactly what we\'ve been dealing with"', badge: 'Right fit', cls: 'icp', time: '2 min ago' },
-  { icon: '🔗', type: 'connect', name: 'Victoria Ilori', desc: 'Accepted your connection request', badge: 'In progress', cls: 'review', time: '5 min ago' },
-  { icon: '💬', type: 'comment', name: 'Joffrey Berti', desc: "Replied and confirmed they're preparing to raise", badge: 'Qualifying', cls: 'qual', time: '8 min ago' },
-  { icon: '📅', type: 'book', name: 'Sintu Singh', desc: 'Call confirmed — Thursday 2pm', badge: 'Booked ✓', cls: 'booked', time: '12 min ago' },
+const TEMPLATES = [
+  { icon: '👍', type: 'like'    as const, name: 'Sarah Chen',     desc: 'Engaged with your post on B2B content strategy',   badge: 'Right fit',  cls: 'icp',    time: 'Just now'    },
+  { icon: '💬', type: 'comment' as const, name: 'Anas Hidaoui',   desc: '"This is exactly what we\'ve been dealing with"',  badge: 'Right fit',  cls: 'icp',    time: '2 min ago'   },
+  { icon: '🔗', type: 'connect' as const, name: 'Victoria Ilori', desc: 'Accepted your connection request',                  badge: 'In progress', cls: 'review', time: '5 min ago'   },
+  { icon: '💬', type: 'comment' as const, name: 'Joffrey Berti',  desc: "Replied and confirmed they're preparing to raise", badge: 'Qualifying', cls: 'qual',   time: '8 min ago'   },
+  { icon: '📅', type: 'book'    as const, name: 'Sintu Singh',    desc: 'Call confirmed — Thursday 2pm',                    badge: 'Booked ✓',   cls: 'booked', time: '12 min ago'  },
 ];
 
-export const SignalPanel: React.FC = () => {
-  const [items, setItems] = useState<Signal[]>([]);
-  const idxRef = useRef(0);
-  const counterRef = useRef(0);
+const ICON_STYLES: Record<string, { bg: string; color: string }> = {
+  like:    { bg: 'rgba(13,148,136,0.18)',  color: '#14B8A8' },
+  comment: { bg: 'rgba(99,102,241,0.18)',  color: '#818CF8' },
+  connect: { bg: 'rgba(168,85,247,0.18)',  color: '#C084FC' },
+  book:    { bg: 'rgba(22,163,74,0.18)',   color: '#4ADE80' },
+};
 
-  // Helper to create a new signal item with unique ID
-  const createSignal = (template: typeof signalsTemplate[0]): Signal => {
-    counterRef.current += 1;
-    return {
-      ...template,
-      id: `${template.name}-${counterRef.current}`,
-    };
-  };
+let uid = 0;
+const createSignal = (t: typeof TEMPLATES[0]): Signal => ({ ...t, id: `${t.name}-${++uid}` });
+
+export const SignalPanel = () => {
+  const [items, setItems] = useState<Signal[]>([]);
+  const idxRef = useRef(4);
 
   useEffect(() => {
-    // Staggered load of first 5 signals
-    signalsTemplate.forEach((s, idx) => {
-      setTimeout(() => {
-        setItems((prev) => [...prev, createSignal(s)]);
-      }, idx * 200);
+    // Staggered initial load
+    TEMPLATES.forEach((t, i) => {
+      setTimeout(() => setItems(prev => [...prev, createSignal(t)]), i * 220);
     });
 
-    idxRef.current = 4; // Start rotating after the 5th item
-
-    // Interval to cycle items
     const interval = setInterval(() => {
-      setItems((prev) => {
-        const nextIdx = (idxRef.current + 1) % signalsTemplate.length;
-        idxRef.current = nextIdx;
-        const newSignal = createSignal(signalsTemplate[nextIdx]);
-
-        // Keep at most 5 items, removing the first one
-        if (prev.length >= 5) {
-          return [...prev.slice(1), newSignal];
-        }
-        return [...prev, newSignal];
+      idxRef.current = (idxRef.current + 1) % TEMPLATES.length;
+      setItems(prev => {
+        const next = [...prev];
+        if (next.length >= 5) next.shift();
+        next.push(createSignal(TEMPLATES[idxRef.current]));
+        return next;
       });
-    }, 3000);
+    }, 3200);
 
     return () => clearInterval(interval);
   }, []);
@@ -64,23 +55,37 @@ export const SignalPanel: React.FC = () => {
   return (
     <div className="signal-panel">
       <div className="signal-header">
-        <div className="signal-dot"></div>
-        <span className="signal-header-text">Live activity</span>
+        <div className="signal-header-left">
+          <div className="signal-dot" />
+          <span className="signal-header-text">Live activity</span>
+        </div>
+        <span className="signal-count">{items.length} signals</span>
       </div>
-      <div className="signal-feed" id="signalFeed">
-        {items.map((item) => (
-          <div key={item.id} className="signal-item">
-            <div className="signal-icon like" style={{ backgroundColor: item.type === 'like' ? 'rgba(13,148,136,.15)' : item.type === 'comment' ? 'rgba(59,130,246,.15)' : item.type === 'connect' ? 'rgba(168,85,247,.15)' : 'rgba(22,163,74,.15)', color: item.type === 'like' ? 'var(--teal)' : item.type === 'comment' ? '#60A5FA' : item.type === 'connect' ? '#C084FC' : '#4ADE80' }}>
-              {item.icon}
+
+      <div className="signal-feed">
+        {items.map((item, i) => {
+          const style = ICON_STYLES[item.type];
+          return (
+            <div
+              key={item.id}
+              className="signal-item"
+              style={{ animationDelay: `${i * 60}ms` }}
+            >
+              <div
+                className="signal-icon"
+                style={{ background: style.bg, color: style.color }}
+              >
+                {item.icon}
+              </div>
+              <div className="signal-body">
+                <div className="signal-name">{item.name}</div>
+                <div className="signal-desc">{item.desc}</div>
+                <div className="signal-time">{item.time}</div>
+              </div>
+              <span className={`signal-badge ${item.cls}`}>{item.badge}</span>
             </div>
-            <div className="signal-body">
-              <div className="signal-name">{item.name}</div>
-              <div className="signal-desc">{item.desc}</div>
-              <div className="signal-time">{item.time}</div>
-            </div>
-            <span className={`signal-badge ${item.cls}`}>{item.badge}</span>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
