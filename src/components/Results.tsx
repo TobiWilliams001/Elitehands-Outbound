@@ -1,54 +1,86 @@
-import React from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
-export const Results: React.FC = () => {
+// Animated counter that counts up when triggered
+const AnimatedStat = ({ label, value }: { label: string; value: string }) => {
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStarted(true); observer.disconnect(); } },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="results-section" id="results">
+    <div className="stat-item" ref={ref}>
+      <div className={`stat-num ${started ? 'stat-visible' : ''}`}>{value}</div>
+      <div className="stat-label">{label}</div>
+    </div>
+  );
+};
+
+const testimonials = [
+  {
+    initials: 'M',
+    quote: '"We looked at my last two months of LinkedIn activity. There were people who engaged and went cold — people who matched exactly who I work with. This system would have caught all of them."',
+    name: 'Matthew Otor',
+    role: 'B2B Video Marketing Consultant, London',
+  },
+  {
+    initials: 'J',
+    quote: '"I came in with zero LinkedIn presence and a very specific type of client I needed to reach. Within weeks there was a profile, consistent content, and conversations starting with the right people."',
+    name: 'Joys Alabi',
+    role: 'Fintech Commercial Strategy Consultant',
+  },
+];
+
+const stats = [
+  { value: '48h',  label: 'From warm signal to conversation started' },
+  { value: '£2K+', label: 'Minimum offer we work with' },
+  { value: '3 mo', label: 'Typical time to a consistent call flow' },
+  { value: '0',    label: 'Cold outreach required from you' },
+];
+
+export const Results = () => {
+  const ref = useScrollReveal();
+
+  return (
+    <section className="results-section" id="results" ref={ref as React.RefObject<HTMLElement>}>
       <div className="container">
-        <div className="section-label">Results</div>
-        <h2 className="section-title">
-          What changes when
-          <br />
-          the pipeline works.
-        </h2>
-        <div className="results-grid">
-          <div className="result-card">
-            <p className="result-quote">"We looked at my last two months of LinkedIn activity. There were people who engaged and went cold — people who matched exactly who I work with. This system would have caught all of them."</p>
-            <div className="result-meta">
-              <div className="result-avatar">M</div>
-              <div>
-                <div className="result-name">Matthew Otor</div>
-                <div className="result-role">B2B Video Marketing Consultant, London</div>
-              </div>
-            </div>
-          </div>
-          <div className="result-card">
-            <p className="result-quote">"I came in with zero LinkedIn presence and a very specific type of client I needed to reach. Within weeks there was a profile, consistent content, and conversations starting with the right people."</p>
-            <div className="result-meta">
-              <div className="result-avatar">J</div>
-              <div>
-                <div className="result-name">Joys Alabi</div>
-                <div className="result-role">Fintech Commercial Strategy Consultant</div>
-              </div>
-            </div>
-          </div>
+        <div className="reveal">
+          <div className="section-label">Results</div>
+          <h2 className="section-title">
+            What changes when
+            <br />
+            the pipeline works.
+          </h2>
         </div>
+
+        <div className="results-grid">
+          {testimonials.map((t, i) => (
+            <div key={t.name} className={`result-card reveal reveal-delay-${i + 1}`}>
+              <p className="result-quote">{t.quote}</p>
+              <div className="result-meta">
+                <div className="result-avatar">{t.initials}</div>
+                <div>
+                  <div className="result-name">{t.name}</div>
+                  <div className="result-role">{t.role}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div className="stat-row">
-          <div className="stat-item">
-            <div className="stat-num">48h</div>
-            <div className="stat-label">From warm signal to conversation started</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-num">£2K+</div>
-            <div className="stat-label">Minimum offer we work with</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-num">3 mo</div>
-            <div className="stat-label">Typical time to a consistent call flow</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-num">0</div>
-            <div className="stat-label">Cold outreach required from you</div>
-          </div>
+          {stats.map((s) => (
+            <AnimatedStat key={s.value} value={s.value} label={s.label} />
+          ))}
         </div>
       </div>
     </section>
