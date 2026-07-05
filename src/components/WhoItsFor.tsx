@@ -24,7 +24,7 @@ export const WhoItsFor = () => {
       <div className="container">
         <div className="reveal">
           <div className="section-label">Who this is for</div>
-          <h2 className="section-title" style={{ color: 'var(--navy)' }}>
+          <h2 className="section-title">
             The fit matters as much
             <br />
             to us as it does to you.
