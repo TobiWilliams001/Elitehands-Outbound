@@ -26,12 +26,12 @@ export const Problem = () => {
       <div className="container">
         <div className="reveal">
           <div className="section-label">The problem</div>
-          <h2 className="section-title" style={{ color: 'var(--navy)' }}>
+          <h2 className="section-title">
             Most B2B founders have a pipeline problem,
             <br />
             not a quality problem.
           </h2>
-          <p className="section-sub" style={{ color: 'var(--slate)' }}>
+          <p className="section-sub">
             You're good at what you do. The people who've worked with you know it. The problem is
             getting enough of the right people to find out about you, consistently, without
             depending on referrals or cold outreach that goes nowhere.
