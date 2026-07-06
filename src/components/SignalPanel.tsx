@@ -20,10 +20,10 @@ const TEMPLATES = [
 ];
 
 const ICON_STYLES: Record<string, { bg: string; color: string; Icon: typeof IconLike }> = {
-  like:    { bg: 'rgba(13,148,136,0.18)',  color: '#14B8A8', Icon: IconLike },
-  comment: { bg: 'rgba(99,102,241,0.18)',  color: '#818CF8', Icon: IconComment },
-  connect: { bg: 'rgba(168,85,247,0.18)',  color: '#C084FC', Icon: IconConnect },
-  book:    { bg: 'rgba(22,163,74,0.18)',   color: '#4ADE80', Icon: IconCalendar },
+  like:    { bg: 'rgba(74,95,234,0.15)',   color: '#3B4FD1', Icon: IconLike },
+  comment: { bg: 'rgba(99,102,241,0.15)',  color: '#4F46E5', Icon: IconComment },
+  connect: { bg: 'rgba(168,85,247,0.15)',  color: '#7C3AED', Icon: IconConnect },
+  book:    { bg: 'rgba(22,163,74,0.15)',   color: '#15803D', Icon: IconCalendar },
 };
 
 let uid = 0;
