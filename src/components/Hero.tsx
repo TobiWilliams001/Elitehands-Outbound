@@ -1,9 +1,6 @@
 import { SignalPanel } from './SignalPanel';
-import { useMagnetic } from '../hooks/useMagnetic';
 
 export const Hero = () => {
-  const magnetic = useMagnetic();
-
   return (
     <>
       <div className="bg-orbs" aria-hidden="true">
@@ -29,15 +26,7 @@ export const Hero = () => {
             </p>
 
             <div className="hero-actions">
-              <a
-                href="#cta"
-                className="btn-primary"
-                ref={magnetic.ref}
-                onMouseMove={magnetic.onMouseMove}
-                onMouseLeave={magnetic.onMouseLeave}
-              >
-                Book a discovery call
-              </a>
+              <a href="#cta" className="btn-primary">Book a discovery call</a>
               <a href="#how" className="link-arrow">See how it works<span>→</span></a>
             </div>
 
@@ -53,14 +42,8 @@ export const Hero = () => {
             </div>
           </div>
 
-          <div className="signal-panel-wrap">
-            <SignalPanel />
-          </div>
+          <SignalPanel />
         </div>
-
-        <a href="#how" className="scroll-cue" aria-label="Scroll to next section">
-          <span />
-        </a>
       </div>
     </>
   );

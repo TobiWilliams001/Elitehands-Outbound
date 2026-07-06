@@ -1,9 +1,6 @@
 import { IconLock } from './icons';
-import { useMagnetic } from '../hooks/useMagnetic';
 
 export const Cta = () => {
-  const magnetic = useMagnetic();
-
   return (
     <section className="cta-section" id="cta">
       <div className="cta-inner">
@@ -18,15 +15,7 @@ export const Cta = () => {
           and whether this is the right fit.
         </p>
         <div className="cta-actions">
-          <a
-            href="#"
-            className="btn-cta-primary"
-            ref={magnetic.ref}
-            onMouseMove={magnetic.onMouseMove}
-            onMouseLeave={magnetic.onMouseLeave}
-          >
-            Book a discovery call →
-          </a>
+          <a href="#" className="btn-cta-primary">Book a discovery call →</a>
         </div>
         <p className="cta-note"><IconLock /> No pitch. No pressure. If it's not the right fit, we'll tell you.</p>
       </div>
