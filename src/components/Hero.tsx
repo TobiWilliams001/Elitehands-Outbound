@@ -7,23 +7,21 @@ export const Hero = () => {
   return (
     <>
       <div className="bg-orbs" aria-hidden="true">
-        <div className="bg-orb bg-orb-1" />
+        <div className="hero-blob" />
         <div className="bg-orb bg-orb-2" />
-        <div className="bg-orb bg-orb-3" />
       </div>
 
       <div className="hero-wrapper">
+        <div className="hero-vertical-mark" aria-hidden="true">
+          Elitehands &mdash; B2B Client Acquisition
+        </div>
+
         <div className="hero-grid">
           <div>
-            <div className="hero-eyebrow">
-              <span className="hero-eyebrow-dot" />
-              B2B Client Acquisition
-            </div>
+            <div className="hero-kicker">You do the work.</div>
 
             <h1 className="hero-headline">
-              You do the work.
-              <br />
-              <em>We fill your calendar.</em>
+              We fill your <em>calendar</em>.
             </h1>
 
             <p className="hero-sub">
@@ -40,7 +38,7 @@ export const Hero = () => {
               >
                 Book a discovery call
               </a>
-              <a href="#how" className="btn-ghost">See how it works →</a>
+              <a href="#how" className="link-arrow">See how it works<span>→</span></a>
             </div>
 
             <div className="hero-trust">
@@ -55,7 +53,9 @@ export const Hero = () => {
             </div>
           </div>
 
-          <SignalPanel />
+          <div className="signal-panel-wrap">
+            <SignalPanel />
+          </div>
         </div>
 
         <a href="#how" className="scroll-cue" aria-label="Scroll to next section">
